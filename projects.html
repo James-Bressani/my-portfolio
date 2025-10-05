@@ -8,6 +8,123 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .projects-section {
+            width: 90%;
+            margin: 2rem auto;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2em;
+        }
+        .project-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+            padding: 2em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e8e8e8;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 35px rgba(0,0,0,0.12);
+        }
+        .project-card h3 {
+            color: #2c3e50;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0.5em;
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+        .project-card p {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 1.5em;
+        }
+        .view-pdf-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .view-pdf-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0}
+            to {opacity: 1}
+        }
+        .modal-content {
+            background-color: #f4f4f9;
+            margin: 2vh auto;
+            border: none;
+            width: 96%;
+            height: 96vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .modal-header h4 {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .close-btn {
+            color: #888;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #e74c3c;
+        }
+        .modal-body {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .pdf-embed {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,8 +140,51 @@
             <a href="Bressani-James-Resume-IT.pdf" target="_blank">Resume</a>
         </nav>
     </header>
-<h2>Projects</h2>
-<p>This section will be organized by date of projects</p> 
-<footer>
+    <div class="projects-section">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Project Management Plan</h3>
+                <p>This project showcases a comprehensive management plan, including timelines, resource allocation, and risk assessment strategies.</p>
+                <button id="viewPdfBtn" class="view-pdf-btn">View</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Project Management Plan</h4>
+                <span id="closeBtn" class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe class="pdf-embed" src="Bressani-Project-Mangement-Plan.pdf"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
         <p>James Bressani</p>
-    </footer> 
+    </footer>
+
+    <script>
+        var modal = document.getElementById('pdfModal');
+        var btn = document.getElementById("viewPdfBtn");
+        var span = document.getElementById("closeBtn");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
