@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .projects-section {
-            width: 90%;
+            width: 96%;
             margin: 2rem auto;
         }
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2em;
+            grid-template-columns: 1fr;
+            gap: 1.5em;
+            width: 100%;
         }
         .project-card {
             background-color: #fff;
@@ -148,6 +149,11 @@
                 <p>LIS 4934: October 5th, 2025</p>
                 <button id="viewPdfBtn" class="view-pdf-btn">View</button>
             </div>
+            <div class="project-card">
+                <h3>Bressani-Event-Report</h3>
+                <p>LIS 4934: October 19th, 2025</p>
+                <button id="viewEventBtn" class="view-pdf-btn">View</button>
+            </div>
         </div>
     </div>
 
@@ -163,6 +169,18 @@
         </div>
     </div>
 
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Bressani-Event-Report</h4>
+                <span id="closeEventBtn" class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe class="pdf-embed" src="Bressani-Event-Report.pdf"></iframe>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>James Bressani</p>
     </footer>
@@ -172,18 +190,36 @@
         var btn = document.getElementById("viewPdfBtn");
         var span = document.getElementById("closeBtn");
 
+    var eventModal = document.getElementById('eventModal');
+    var eventBtn = document.getElementById("viewEventBtn");
+    var eventClose = document.getElementById("closeEventBtn");
+
         btn.onclick = function() {
             modal.style.display = "block";
         }
+
+        eventBtn.onclick = function() {
+            eventModal.style.display = "block";
+        }
+
 
         span.onclick = function() {
             modal.style.display = "none";
         }
 
+        eventClose.onclick = function() {
+            eventModal.style.display = "none";
+        }
+
+
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
+            if (event.target == eventModal) {
+                eventModal.style.display = "none";
+            }
+            
         }
     </script>
 </body>
