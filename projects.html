@@ -154,6 +154,11 @@
                 <p>LIS 4934: October 19th, 2025</p>
                 <button id="viewEventBtn" class="view-pdf-btn">View</button>
             </div>
+            <div class="project-card">
+                <h3>AI Ethics</h3>
+                <p>LIS 4934: November 2nd, 2025</p>
+                <button id="viewAIBtn" class="view-pdf-btn">View</button>
+            </div>
         </div>
     </div>
 
@@ -181,6 +186,18 @@
         </div>
     </div>
 
+    <div id="aiModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>AI Ethics</h4>
+                <span id="closeAIBtn" class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe class="pdf-embed" src="Bressani-AI-Ethics.pdf"></iframe>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>James Bressani</p>
     </footer>
@@ -194,12 +211,20 @@
     var eventBtn = document.getElementById("viewEventBtn");
     var eventClose = document.getElementById("closeEventBtn");
 
+    var aiModal = document.getElementById('aiModal');
+    var aiBtn = document.getElementById("viewAIBtn");
+    var aiClose = document.getElementById("closeAIBtn");
+
         btn.onclick = function() {
             modal.style.display = "block";
         }
 
         eventBtn.onclick = function() {
             eventModal.style.display = "block";
+        }
+
+        aiBtn.onclick = function() {
+            aiModal.style.display = "block";
         }
 
 
@@ -211,6 +236,10 @@
             eventModal.style.display = "none";
         }
 
+        aiClose.onclick = function() {
+            aiModal.style.display = "none";
+        }
+
 
         window.onclick = function(event) {
             if (event.target == modal) {
@@ -218,6 +247,9 @@
             }
             if (event.target == eventModal) {
                 eventModal.style.display = "none";
+            }
+            if (event.target == aiModal) {
+                aiModal.style.display = "none";
             }
             
         }
