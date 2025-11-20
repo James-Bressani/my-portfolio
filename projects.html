@@ -159,6 +159,11 @@
                 <p>LIS 4934: November 2nd, 2025</p>
                 <button id="viewAIBtn" class="view-pdf-btn">View</button>
             </div>
+            <div class="project-card">
+                <h3>Information Policy</h3>
+                <p>LIS 4934: November 16th, 2025</p>
+                <button id="viewInfoPolicyBtn" class="view-pdf-btn">View</button>
+            </div>
         </div>
     </div>
 
@@ -198,6 +203,18 @@
         </div>
     </div>
 
+    <div id="infoPolicyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Information Policy</h4>
+                <span id="closeInfoPolicyBtn" class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe class="pdf-embed" src="Bressani-Information-Policy.pdf"></iframe>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>James Bressani</p>
     </footer>
@@ -215,6 +232,10 @@
     var aiBtn = document.getElementById("viewAIBtn");
     var aiClose = document.getElementById("closeAIBtn");
 
+    var infoPolicyModal = document.getElementById('infoPolicyModal');
+    var infoPolicyBtn = document.getElementById("viewInfoPolicyBtn");
+    var infoPolicyClose = document.getElementById("closeInfoPolicyBtn");
+
         btn.onclick = function() {
             modal.style.display = "block";
         }
@@ -225,6 +246,10 @@
 
         aiBtn.onclick = function() {
             aiModal.style.display = "block";
+        }
+
+        infoPolicyBtn.onclick = function() {
+            infoPolicyModal.style.display = "block";
         }
 
 
@@ -240,6 +265,10 @@
             aiModal.style.display = "none";
         }
 
+        infoPolicyClose.onclick = function() {
+            infoPolicyModal.style.display = "none";
+        }
+
 
         window.onclick = function(event) {
             if (event.target == modal) {
@@ -250,6 +279,9 @@
             }
             if (event.target == aiModal) {
                 aiModal.style.display = "none";
+            }
+            if (event.target == infoPolicyModal) {
+                infoPolicyModal.style.display = "none";
             }
             
         }
